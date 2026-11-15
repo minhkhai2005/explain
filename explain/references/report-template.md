@@ -38,7 +38,10 @@ the concept ladder toward the term, one subsection per layer or per concept
 know at the boundary layer and every concept in the layers above it: what it
 is, why it behaves that way, and an example or figure when it helps. Each
 explanation may rely only on concepts the user knows or that were explained
-just before. Concepts the user knows well get at most a one-sentence reminder.
+just before. Concepts the user knows well get at most a one-sentence reminder,
+woven in naturally. Write it as a book section for any reader: never mention
+the reader, the probe, or why a concept is or is not explained (see the
+"general readership" rule below).
 Define each secondary term at first use.>
 
 # 3. Origin and history
@@ -96,6 +99,13 @@ Table 1: Comparison of <term> with related terms.
 
 - **Book-style prose, not bullet points.** Paragraphs force causal links ("because", "therefore") that bullets drop; those links are what make an explanation understandable.
 - **Start where the reader's knowledge ends.** A new concept is understood only when it is anchored to something the reader already knows. The knowledge probe finds that point; building upward from it, layer by layer, is what makes the explanation thorough instead of either patronising or opaque.
+- **Write for a general readership, never for one person.** The report must read like a chapter of a technical book that anyone in the field can pick up, so it can be shared. The knowledge probe only decides *where the explanation starts and how deep it goes*; it must leave no trace in the text. Never address the reader as "you" / "bạn", never mention what someone knows or does not know, never mention the probe, the questions, the answers or the reader profile, and never explain why a concept is or is not covered. Prerequisites that are not re-taught are woven in naturally as shared background (a short reminder in passing, or a neutral book-style statement such as "This chapter assumes familiarity with UART framing and baud rate"). Use the impersonal or "we" voice of textbooks ("Consider…", "As in UART, …", "Ta xét…").
+
+  | Avoid (personal) | Prefer (book voice) |
+  |------------------|---------------------|
+  | "Bạn đã nắm vững UART và baud rate, … nên các ý đó chỉ được nhắc lại khi cần." | "Phần này giả định người đọc đã quen với khung truyền UART và khái niệm baud rate; hai ý này chỉ được nhắc lại khi cần." or simply start the section and recall UART in passing where it is used. |
+  | "Ở lớp nền, hai khái niệm sẽ được giải thích kỹ là mã hóa NRZ và mã kiểm lỗi CRC." (because the reader didn't know them) | "Hai nền tảng của tầng vật lý CAN là mã hóa NRZ và mã kiểm lỗi CRC." then explain them. |
+  | "Since you already know p-n junctions, …" | "Recall that a p-n junction …" |
 - **Define jargon at first use.** One undefined term can make a whole paragraph opaque.
 - **Numbered citations `[n]`, in order of first appearance**, matching the References list exactly. This makes every claim checkable.
 - **Verbatim definition first.** It gives the reader the authoritative wording and protects against drifting paraphrases.

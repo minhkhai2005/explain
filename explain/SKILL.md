@@ -44,6 +44,8 @@ A complex term rests on layers of simpler concepts. To explain it thoroughly, th
 
 The report must then explain in detail every unknown concept in the boundary layer **and** every concept in each higher layer, up to the target term. Concepts the user already knows get at most a one-sentence reminder.
 
+The probe decides **what** the report covers, never **who** it speaks to. The report is written like a technical book for a general readership so it can be shared: it never addresses the reader ("you", "bạn"), never mentions what the reader knows, and never mentions the probe or `reader-profile.md`.
+
 ## Step 3: Gather sources
 
 The most trustworthy explanation of a term is the document that defines it. Read `references/source-hierarchy.md` and work from the top of the hierarchy down: standards and specifications, the original paper that introduced the term, established textbooks, then vendor datasheets and application notes. Blogs and forums are a last resort and any claim taken from them must be cross-checked against at least two independent, more authoritative sources.
@@ -62,6 +64,7 @@ Follow the outline in `references/report-template.md`. Write bottom-up along the
 
 Key expectations (details and reasons in the template):
 - Explain in detail every concept listed in `reader-profile.md` (unknown concepts at the boundary layer and all concepts above it), in the Background section and in ladder order. Do not re-teach concepts the user said they know well.
+- Write in the impersonal or textbook "we" voice for a general readership (see the writing rules in the template). Before exporting, search `report.md` for second-person words ("you", "your", "bạn", "của bạn") and for any mention of the probe, the reader's knowledge or the reader profile, and rewrite those sentences.
 - Define every secondary piece of jargon the first time it appears.
 - Support claims with numbered in-text citations `[n]` that match the References list.
 - Include at least one fully worked example with concrete values, and real-world usage examples.
