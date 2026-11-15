@@ -1,6 +1,6 @@
 # explain
 
-A Claude skill that writes a detailed, textbook-style report on a single technical term from any field. It is meant for readers who already know the basics of that field.
+A Claude skill that writes a detailed, textbook-style report on a single technical term from any field. Before writing, it asks you a few short questions to find out which related concepts you already know, and starts the explanation exactly where your knowledge ends.
 
 ## What it does
 
@@ -13,7 +13,7 @@ Each report includes:
 - at least one diagram, saved as an editable source file and as a PNG. By default it's a gray-and-white draw.io diagram. Only when that style can't show the subject (e.g. anatomy or cell structure in medicine and biology) does Claude draw an SVG illustration in soft, muted colours
 - numbered citations and a reference list (it never invents sources)
 
-The result is saved as Markdown. If you ask, Claude also builds a DOCX or PDF with its built-in `docx` / `pdf` skills. Pandoc is not needed. Every DOCX follows the same structure, each part on its own page: title page (title, author, date), table of contents, list of figures, list of tables, then the body and references. Styles come from the empty template `explain/assets/report-template.docx` unless you give Claude your own `.docx` template, and `explain/scripts/check-docx.py` checks that the result uses exactly those styles. `explain/assets/report-example.docx` shows a finished report in that style.
+The result is saved as Markdown. If you ask, Claude also builds a DOCX or PDF with its built-in `docx` / `pdf` skills. Pandoc is not needed. Every DOCX follows the same structure, each part on its own page: title page (title, author, date), table of contents, list of figures, list of tables, list of abbreviations, then the body and references. Styles come from the empty template `explain/assets/report-template.docx` unless you give Claude your own `.docx` template, and `explain/scripts/check-docx.py` checks that the result uses exactly those styles. `explain/assets/report-example.docx` shows a finished report in that style.
 
 ## How to use it
 
@@ -36,13 +36,18 @@ It only asks about what it can't work out from your request:
 - output format (Markdown, DOCX, or PDF), and for DOCX whether you have your own template
 - the author name for the title page
 
-### 3. Get the files
+### 3. Answer a few questions about what you already know
+
+Complex terms are built from simpler concepts in layers. Claude asks short sets of questions (at least 5 each) about whether you know specific related concepts, starting at the layer your reader level suggests (e.g. Ohm's law, diodes and p-n junctions for a student asking about MOSFETs). If you know everything in a set, the next set goes one layer higher. The first layer with concepts you don't know is where the report starts: those concepts, and everything between them and the term, are explained in detail. The result is saved as `reader-profile.md`.
+
+### 4. Get the files
 
 They are saved in a folder named after the term:
 
 ```
 eventual-consistency/
 ├── report.md           (+ report.docx / report.pdf if requested)
+├── reader-profile.md   (what the knowledge probe found)
 └── figures/
     ├── fig1.drawio     (default style)
     ├── fig1.png
@@ -110,6 +115,7 @@ explain/
 ├── SKILL.md                      # workflow
 ├── README.md                     # this file
 ├── references/
+│   ├── knowledge-probe.md        # how to probe the reader's prior knowledge
 │   ├── report-template.md        # section outline and writing rules
 │   ├── source-hierarchy.md       # which sources to trust, per industry
 │   ├── diagram-style.md          # when to use draw.io vs SVG, both styles, PNG export

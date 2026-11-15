@@ -7,8 +7,9 @@ Usage: python3 check-docx.py <report.docx> [template.docx]
 Errors (exit code 1):
   - styles.xml, page size or margins differ from the template
   - a style ID is used that the template does not define
-  - the front matter is not: title page | TOC | List of Figures | List of Tables | body,
-    each separated by a page break
+  - the front matter is not: title page | TOC | List of Figures | List of Tables |
+    List of Abbreviations | body, each separated by a page break
+  - the List of Abbreviations page has no table (or no 'no abbreviations' line)
   - TOC / List of Figures / List of Tables fields are missing
   - no figure caption or no table caption
 Warnings:
@@ -130,13 +131,17 @@ def main():
                 cur.append(s)
         if cur:
             parts.append(cur)
-        expected = ["Title", "TOCHeading", "TOCHeading", "TOCHeading"]
+        expected = ["Title", "TOCHeading", "TOCHeading", "TOCHeading", "TOCHeading"]
         heads = [p[0] if p else None for p in parts]
         if heads != expected:
             errors.append(
-                "front matter must be 4 pages separated by page breaks: "
-                "title page | Table of Contents | List of Figures | List of Tables, then the body on a new page. "
+                "front matter must be 5 pages separated by page breaks: "
+                "title page | Table of Contents | List of Figures | List of Tables | List of Abbreviations, "
+                "then the body on a new page. "
                 "Found page starts: %s" % heads)
+        elif len(parts[4]) < 2:
+            errors.append("List of Abbreviations page is empty: add the abbreviations table "
+                          "(or one line saying the report uses none)")
         if parts and parts[0][:1] == ["Title"]:
             for s in ("Author", "Date"):
                 if s in defined and s not in parts[0]:

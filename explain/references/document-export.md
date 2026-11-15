@@ -28,7 +28,7 @@ If you use a library (e.g. python-docx or docx-js) instead of writing XML, open 
 
 ## Required structure (always, in this order)
 
-Each block marked ⏎ ends with a page break: a paragraph containing only `<w:r><w:br w:type="page"/></w:r>`. The title page, Table of Contents, List of Figures and List of Tables **each get their own page**, and the body starts on a new page.
+Each block marked ⏎ ends with a page break: a paragraph containing only `<w:r><w:br w:type="page"/></w:r>`. The title page, Table of Contents, List of Figures, List of Tables and List of Abbreviations **each get their own page**, and the body starts on a new page.
 
 | # | Block | Style ID | Content |
 |---|-------|----------|---------|
@@ -36,10 +36,18 @@ Each block marked ⏎ ends with a page break: a paragraph containing only `<w:r>
 | 2 | Table of Contents ⏎ | `TOCHeading` + TOC field | Field code `TOC \o "1-2" \h \z \u`, with entries pre-filled in styles `TOC1` / `TOC2` (right tab with dot leader at 9350) |
 | 3 | List of Figures ⏎ | `TOCHeading` + TOC field | Field code `TOC \h \z \t "Image Caption,1"`; one `TOC1` entry per figure |
 | 4 | List of Tables ⏎ | `TOCHeading` + TOC field | Field code `TOC \h \z \t "Table Caption,1"`; one `TOC1` entry per table |
-| 5 | Body | see below | Sections 1 … n of `report.md` |
-| 6 | References | `Heading1` (unnumbered) | Entries `[n] ...` |
+| 5 | List of Abbreviations ⏎ | `TOCHeading` + table | Table from the `List of Abbreviations` section of `report.md` (see below) |
+| 6 | Body | see below | Sections 1 … n of `report.md` |
+| 7 | References | `Heading1` (unnumbered) | Entries `[n] ...` |
 
-Never leave out the Table of Contents, List of Figures or List of Tables. Every report has at least one figure and one table (the comparison table), so both lists always have entries.
+Never leave out the Table of Contents, List of Figures, List of Tables or List of Abbreviations. Every report has at least one figure and one table (the comparison table), so both lists always have entries.
+
+### List of Abbreviations
+
+- One table in table style `Table` (full width, same borders as body tables, header row repeated), cell paragraphs in `Compact`. Header row bold. No caption, and it is **not** counted in the List of Tables.
+- Columns: abbreviation | full form. For a report not written in English, add a third column with the meaning in the report's language (e.g. Vietnamese: "Từ viết tắt | Tiếng Anh | Tiếng Việt"). Column widths roughly 20% | 40% | 40% (or 20% | 80%).
+- Every abbreviation and acronym used anywhere in the report (body, figures, tables, captions) appears once, sorted alphabetically. Symbols of quantities and units (V, mA, Vt) are not abbreviations and are not listed.
+- If the report really has no abbreviations, keep the page with the heading and one line saying so ("Báo cáo không sử dụng từ viết tắt." / "This report uses no abbreviations.").
 
 ## Body: Markdown → template styles
 
@@ -86,17 +94,17 @@ US Letter (8.5 × 11 in), 1 in margins, empty header and footer.
 
 ## Fixed labels by language
 
-| Language | TOC | List of figures | List of tables | Figure | Table | References |
-|----------|-----|-----------------|----------------|--------|-------|------------|
-| Vietnamese | Mục lục | Danh mục hình | Danh mục bảng | Hình | Bảng | Tài liệu tham khảo |
-| English | Table of Contents | List of Figures | List of Tables | Figure | Table | References |
+| Language | TOC | List of figures | List of tables | List of abbreviations | Figure | Table | References |
+|----------|-----|-----------------|----------------|-----------------------|--------|-------|------------|
+| Vietnamese | Mục lục | Danh mục hình | Danh mục bảng | Danh mục từ viết tắt | Hình | Bảng | Tài liệu tham khảo |
+| English | Table of Contents | List of Figures | List of Tables | List of Abbreviations | Figure | Table | References |
 
 For other languages translate the labels the same way.
 
 ## PDF
 
-Build the PDF with the pdf skill, matching the same structure, page setup and look: title page, then Table of Contents, List of Figures and List of Tables each on its own page with page numbers, then the body, plus PDF bookmarks for every heading. If a DOCX was also built and the pdf/docx skill offers a DOCX→PDF conversion (e.g. LibreOffice), converting that DOCX is the most faithful way to get an identical PDF.
+Build the PDF with the pdf skill, matching the same structure, page setup and look: title page, then Table of Contents, List of Figures, List of Tables and List of Abbreviations each on its own page (with page numbers in the first three), then the body, plus PDF bookmarks for every heading. If a DOCX was also built and the pdf/docx skill offers a DOCX→PDF conversion (e.g. LibreOffice), converting that DOCX is the most faithful way to get an identical PDF.
 
 ## Check before delivering
 
-Run `scripts/check-docx.py` (above). Then convert the result to PDF (or render it) and look at the first pages: the title page, Table of Contents, List of Figures and List of Tables must each be on a separate page, and the body must start on a new page. Check that every figure and table appears in its list and that the styles match the template.
+Run `scripts/check-docx.py` (above). Then convert the result to PDF (or render it) and look at the first pages: the title page, Table of Contents, List of Figures, List of Tables and List of Abbreviations must each be on a separate page, and the body must start on a new page. Check that every figure and table appears in its list, that every abbreviation in the text is in the List of Abbreviations, and that the styles match the template.
