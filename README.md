@@ -13,7 +13,7 @@ Each report includes:
 - at least one gray-and-white diagram, saved as an editable draw.io file and as a PNG
 - numbered citations and a reference list (it never invents sources)
 
-The result is saved as Markdown. If you ask, it is also exported to DOCX or PDF with a title page, table of contents, and numbered figures and tables.
+The result is saved as Markdown. If you ask, Claude also builds a DOCX or PDF with its built-in `docx` / `pdf` skills, with a title page, table of contents, and numbered figures and tables. Pandoc is not needed.
 
 ## How to use it
 
@@ -43,26 +43,57 @@ They are saved in a folder named after the term:
 ```
 eventual-consistency/
 ├── report.md           (+ report.docx / report.pdf if requested)
-├── metadata.yaml
 └── figures/
     ├── fig1.drawio
     └── fig1.png
 ```
 
-Open the `.drawio` file in draw.io to edit a diagram. Then run this to rebuild the PNGs and documents:
+Open the `.drawio` file in draw.io to edit a diagram. Then run this to rebuild the PNGs (on Windows, from Git Bash or WSL):
 
 ```bash
-bash explain/scripts/export.sh <folder> docx pdf
+bash explain/scripts/render-figures.sh <folder>
 ```
+
+To rebuild the DOCX/PDF after editing, ask Claude, e.g. "rebuild report.docx and report.pdf for eventual-consistency".
 
 ## Requirements
 
-| Tool | Needed for | Install |
-|------|------------|---------|
-| Pandoc | DOCX/PDF export | `brew install pandoc` |
-| draw.io desktop | Rendering diagrams to PNG | [drawio.com](https://www.drawio.com) |
-| pandoc-crossref (optional) | Numbered figures/tables and their lists | `brew install pandoc-crossref` |
-| Typst or LaTeX (optional) | PDF export | `brew install typst` |
+| Tool | Needed for | Required? |
+|------|------------|-----------|
+| Claude's built-in `docx` and `pdf` skills | DOCX/PDF export | Only for DOCX/PDF. Turn them on in Claude's skills settings |
+| draw.io desktop | Rendering diagrams to PNG | Recommended |
+| Graphviz or matplotlib | Fallback diagrams if draw.io isn't installed | Optional |
+| Bash | Running `render-figures.sh` | Built into macOS/Linux; on Windows use Git Bash or WSL |
+
+### Install commands
+
+**macOS** (Homebrew)
+
+```bash
+brew install --cask drawio
+brew install graphviz          # optional fallback
+pip3 install matplotlib        # optional fallback
+```
+
+**Windows** (PowerShell, winget)
+
+```powershell
+winget install JGraph.Draw
+winget install Git.Git              # provides Git Bash for the script
+winget install Graphviz.Graphviz    # optional fallback
+pip install matplotlib              # optional fallback
+```
+
+**Linux** (Debian/Ubuntu)
+
+```bash
+sudo snap install drawio            # or the .deb / AppImage from github.com/jgraph/drawio-desktop/releases
+sudo apt install xvfb               # only on headless servers (no display)
+sudo apt install graphviz           # optional fallback
+pip3 install matplotlib             # optional fallback
+```
+
+On Fedora use `sudo dnf install graphviz xorg-x11-server-Xvfb`, and on Arch `sudo pacman -S graphviz xorg-server-xvfb`. Install draw.io from the drawio-desktop releases page (`.rpm` or AppImage).
 
 If draw.io isn't installed, the skill falls back to Graphviz or matplotlib, after asking you first.
 
@@ -75,11 +106,10 @@ explain/
 ├── references/
 │   ├── report-template.md        # section outline and writing rules
 │   ├── source-hierarchy.md       # which sources to trust, per industry
-│   └── diagram-style.md          # diagram types, style, PNG export
+│   ├── diagram-style.md          # diagram types, style, PNG export
+│   └── document-export.md        # DOCX/PDF layout for the docx / pdf skills
 ├── assets/
-│   ├── diagram-template.drawio   # starter diagram with the house styles
-│   ├── metadata.yaml             # title, author, TOC, lists of figures/tables
-│   └── reference.docx            # Word style template (edit to restyle exports)
+│   └── diagram-template.drawio   # starter diagram with the house styles
 └── scripts/
-    └── export.sh                 # renders diagrams and builds DOCX/PDF
+    └── render-figures.sh         # renders draw.io diagrams to PNG
 ```

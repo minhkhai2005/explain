@@ -33,13 +33,15 @@ Simple, professional, scientific, as it would look printed in a textbook:
 
 ## Rendering to PNG
 
-`scripts/export.sh` renders every `figures/*.drawio` automatically. To render one by hand:
+`scripts/render-figures.sh` renders every `figures/*.drawio` automatically. To render one by hand:
 
 ```bash
 # macOS app bundle
 /Applications/draw.io.app/Contents/MacOS/draw.io -x -f png -s 2 -b 10 -o figures/fig1.png figures/fig1.drawio
-# Linux / CLI on PATH
+# Linux / CLI on PATH (prefix with `xvfb-run -a` on a headless server)
 drawio -x -f png -s 2 -b 10 -o figures/fig1.png figures/fig1.drawio
+# Windows (PowerShell)
+& "C:\Program Files\draw.io\draw.io.exe" -x -f png -s 2 -b 10 -o figures\fig1.png figures\fig1.drawio
 ```
 
 `-s 2` gives 2× scale for crisp print output; `-b 10` adds a 10 px border.

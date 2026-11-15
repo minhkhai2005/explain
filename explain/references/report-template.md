@@ -2,9 +2,16 @@
 
 Use these sections in this order. Number headings by hand (`# 1 ...`, `## 1.1 ...`); References stays unnumbered. A section may be omitted only when it truly does not apply (e.g. no formal/mathematical description exists); say so briefly rather than padding it.
 
-The Markdown below uses pandoc-crossref syntax for figures and tables (`{#fig:...}`, `{#tbl:...}`, `@fig:...`). If pandoc-crossref is unavailable, the export still works; labels are simply not numbered automatically. Check with `command -v pandoc-crossref` before writing: if it is missing, write captions as "Figure 1: ..." / "Table 1: ..." and in-text references as "Figure 1" by hand instead of `@fig:...` (which would otherwise appear literally in the output).
+Number figures and tables by hand in order of appearance: captions read "Figure 1: ..." / "Table 1: ...", and the text refers to them as "Figure 1" / "Table 1". The same numbers are carried into the DOCX/PDF (see `document-export.md`).
 
 ```markdown
+<!-- Title block: used for the title page of the DOCX/PDF -->
+**Title:** <Term>: <short subtitle>
+
+**Author:** <Author name — confirmed with the user, never guessed>
+
+**Date:** <YYYY-MM-DD>
+
 # 1 Definition
 
 > "<verbatim formal definition>" [1]
@@ -27,9 +34,9 @@ How its meaning evolved, if it did.>
 
 <The mechanism, step by step, in prose. Reference the diagram.>
 
-![<Caption describing what the figure shows.>](figures/fig1.png){#fig:mechanism width=85%}
+![Figure 1: <Caption describing what the figure shows.>](figures/fig1.png)
 
-As shown in @fig:mechanism, ...
+As shown in Figure 1, ...
 
 # 5 Formal description
 
@@ -48,11 +55,11 @@ values, design decisions, a short case study. Cite sources.>
 
 # 8 Related and commonly confused terms
 
+Table 1: Comparison of <term> with related terms.
+
 | Term | Definition | Key difference from <term> |
 |------|------------|----------------------------|
 | ...  | ...        | ...                        |
-
-: Comparison of <term> with related terms. {#tbl:related}
 
 # 9 Common misconceptions
 
