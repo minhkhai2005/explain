@@ -1,0 +1,26 @@
+# Copy into <term-slug>/ and fill in the placeholders.
+title: "<Term>: <short subtitle>"
+author: "<Author name — confirmed with the user, never guessed>"
+date: "<YYYY-MM-DD>"
+lang: en
+
+# Table of contents and numbered sections
+toc: true
+toc-depth: 3
+toc-title: "Table of Contents"
+numbersections: false   # headings are numbered by hand in report.md
+
+# pandoc-crossref: numbered figures/tables and their lists
+lof: true
+lot: true
+lofTitle: "List of Figures"
+lotTitle: "List of Tables"
+figureTitle: "Figure"
+tableTitle: "Table"
+figPrefix: "Figure"
+tblPrefix: "Table"
+linkReferences: true
+
+# PDF layout
+geometry: margin=2.5cm
+fontsize: 11pt

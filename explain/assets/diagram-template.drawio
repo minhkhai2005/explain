@@ -1,0 +1,40 @@
+<mxfile host="drawio" type="device">
+  <diagram id="fig" name="Figure">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Primary block: white fill -->
+        <mxCell id="blockA" value="Input" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Secondary block: light gray fill -->
+        <mxCell id="blockB" value="Process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#333333;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="260" y="120" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Emphasis block: darker gray fill -->
+        <mxCell id="blockC" value="Output" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9D9D9;strokeColor=#333333;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="480" y="120" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Solid arrow with label -->
+        <mxCell id="edgeAB" value="signal" style="endArrow=block;endFill=1;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Helvetica;fontSize=10;fontColor=#000000;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="blockA" target="blockB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dashed arrow (secondary / optional path) -->
+        <mxCell id="edgeBC" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="blockB" target="blockC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Annotation text -->
+        <mxCell id="note1" value="Annotation (10 pt)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="260" y="200" width="140" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
