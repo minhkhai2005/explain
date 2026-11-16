@@ -27,7 +27,7 @@ The same term often means different things in different industries (e.g. "bearin
 - If the industry is clear from context, state your assumption and move on. Only ask when it is genuinely ambiguous. When you ask, search for the plausible meanings and offer them as options; the user can always type their own answer.
 - In the same round, ask about anything not already given:
   - **Reader level**: student / practitioner / expert (default: practitioner with fundamentals)
-  - **Length**: default 2,000–4,000 words
+  - **Length**: offer the three options in `references/report-template.md` (Length options): Concise, Standard (default), In-depth. Each option must state its approximate length **and** what the report will contain (depth of mechanism and equations, number of worked examples, case studies, figures, sources), so the user can compare them. With a question tool, put that summary in each option's description; otherwise list the options with one line each.
   - **Language** of the report (default: the language the user wrote in)
   - **Output format**: Markdown only, or also DOCX / PDF (and, for DOCX, whether they have their own `.docx` template; if not, the bundled one is used)
   - **Author name** for the title page. Try `git config user.name` first and confirm it; never invent a name.

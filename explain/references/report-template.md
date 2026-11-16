@@ -95,6 +95,32 @@ Table 1: Comparison of <term> with related terms.
 [2] ...
 ```
 
+## Length options
+
+The user picks one of these in Step 1. Every option keeps **all** sections of the outline and explains every prerequisite the knowledge probe finds; the options differ in how much each section contains. Word counts are for the body (sections 1 to Summary) and are approximate; page counts are for the DOCX with figures (about 350–400 words per page), not counting the front matter.
+
+| | **Concise** | **Standard** (default) | **In-depth** |
+|---|---|---|---|
+| Length | ~1,500–2,500 words, ~5–8 pages | ~3,000–5,000 words, ~10–15 pages | ~6,000–10,000 words, ~20–30 pages |
+| Best for | Getting the core idea quickly, a quick reference, a short briefing | Understanding the term properly, a study or internal report | Mastering the term, designing with it, teaching it, a thesis or literature chapter |
+| Background (prerequisites from the probe) | Each concept explained in one or two paragraphs | Each concept gets its own subsection with an explanation and a short example | Each concept gets its own subsection with an example and, where useful, a figure |
+| Definition and history | Formal definition; history in one paragraph | Formal definition with paraphrase; history in 2–3 paragraphs (origin, key milestones) | Definition compared across several standards or sources; detailed history with a timeline |
+| How it works | Main mechanism, step by step | Full mechanism, including the main operating modes or cases | Full mechanism plus variants, edge cases and second-order effects |
+| Formal description | Key equations only, symbols defined, no derivation | Main equations with short derivations or reasoning | Full derivations, model assumptions and where the model breaks down |
+| Worked examples | 1 short example | 1 complete multi-step example | 2 or more: a textbook example and a realistic one with real parameters |
+| Use in practice | 2–3 applications in a paragraph each | 3–5 applications plus 1 short case study | Many applications, 2 or more case studies, typical values and design trade-offs |
+| Comparison and misconceptions | Table of 2–3 related terms; 2–3 misconceptions | Table of 4–6 related terms; 4–5 misconceptions | Extended comparison table; 5 or more misconceptions; open questions and current research directions |
+| Figures and tables | 1 figure (the mechanism), 1 table | 2–3 figures, 1–2 tables | 4 or more figures, 3 or more tables |
+| Sources | ~6–10 | ~10–20 | 20 or more |
+
+When asking, show each option with its length **and** a one-line summary of what it contains, in the user's language, so the options can be compared at a glance. For example (Vietnamese):
+
+- **Ngắn gọn** (~1.500–2.500 từ, ~5–8 trang): ý chính và cơ chế hoạt động, phương trình cốt lõi không chứng minh, 1 ví dụ ngắn, 1 hình, ~6–10 nguồn.
+- **Tiêu chuẩn** (~3.000–5.000 từ, ~10–15 trang; mặc định): đầy đủ cơ chế và các chế độ hoạt động, phương trình có suy luận ngắn, 1 ví dụ tính toán hoàn chỉnh, 1 tình huống thực tế, 2–3 hình, ~10–20 nguồn.
+- **Chuyên sâu** (~6.000–10.000 từ, ~20–30 trang): thêm biến thể, hiệu ứng bậc hai, chứng minh đầy đủ và giới hạn của mô hình, từ 2 ví dụ, nhiều tình huống thực tế, từ 4 hình, từ 20 nguồn.
+
+If the user gives their own word or page count instead, use the closest option as the guide for what to include.
+
 ## Writing rules and why they exist
 
 - **Book-style prose, not bullet points.** Paragraphs force causal links ("because", "therefore") that bullets drop; those links are what make an explanation understandable.
@@ -110,7 +136,7 @@ Table 1: Comparison of <term> with related terms.
 - **Numbered citations `[n]`, in order of first appearance**, matching the References list exactly. This makes every claim checkable.
 - **Verbatim definition first.** It gives the reader the authoritative wording and protects against drifting paraphrases.
 - **Worked example with real numbers.** Abstract descriptions often feel understood until the reader tries to apply them.
-- **Target length** 2,000–4,000 words unless the user asked otherwise. Depth comes from mechanism and examples, not repetition.
+- **Stay within the chosen length option** (see Length options above). Depth comes from mechanism and examples, not repetition.
 - **Every figure and table has a caption and is referenced in the text.** An unreferenced figure is usually decoration.
 - **Spell out every abbreviation at first use** ("metal–oxide–semiconductor field-effect transistor (MOSFET)") and list it in the List of Abbreviations. Readers jump between sections, and the list lets them look up an acronym without searching for its first use.
 - **Flag uncertainty.** If sources disagree or a claim could not be verified, say so explicitly.

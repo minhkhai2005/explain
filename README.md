@@ -32,7 +32,8 @@ You can also call it directly with `/explain <term>`.
 It only asks about what it can't work out from your request:
 
 - which field you mean, if the term is ambiguous (e.g. "bearing")
-- reader level, length, and language
+- reader level and language
+- length: **Concise** (~5–8 pages: core idea, key equations, one example), **Standard** (~10–15 pages: full mechanism, derivations, a complete worked example and a case study) or **In-depth** (~20–30 pages: variants, full derivations, several examples and case studies). Each option lists exactly what the report will include
 - output format (Markdown, DOCX, or PDF), and for DOCX whether you have your own template
 - the author name for the title page
 
